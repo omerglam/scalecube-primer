@@ -4,19 +4,14 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.omer</groupId>
-    <artifactId>quotes-service-parent</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>wallet-service-parent</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>quotes-service</artifactId>
-  <name>quotes-service</name>
-
+  <name>wallet-service</name>
+  <artifactId>wallet-service</artifactId>
   <dependencies>
-      <dependency>
-          <groupId>org.omer</groupId>
-          <artifactId>quotes-service-api</artifactId>
-          <version>1.0-SNAPSHOT</version>
-      </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
