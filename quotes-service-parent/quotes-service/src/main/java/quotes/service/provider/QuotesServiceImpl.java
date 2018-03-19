@@ -31,6 +31,8 @@ public class QuotesServiceImpl implements QuotesService {
     @Override
     public Observable<Quote> quotes(QuoteRequest request) {
 
+        //TODO: requires synchronization over the quotes generator collection?
+
         // if already serving the quote, reuse the stream
         if (quotesGenerators.containsKey(request.getTicker())) {
 
@@ -38,6 +40,8 @@ public class QuotesServiceImpl implements QuotesService {
         }
 
         QuotesGenerator generator = new QuotesGeneratorImpl(request.getTicker());
+
+        quotesGenerators.putIfAbsent(request.getTicker(),generator);
 
         return generator.generate();
     }
