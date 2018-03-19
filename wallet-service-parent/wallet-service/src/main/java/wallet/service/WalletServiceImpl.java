@@ -3,6 +3,7 @@ package wallet.service;
 import io.scalecube.services.Microservices;
 import io.scalecube.transport.Address;
 
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
@@ -23,8 +24,8 @@ public class WalletServiceImpl implements WalletService
     }
 
     @Override
-    public BuyResponse buy(BuyRequest request) {
+    public CompletableFuture<BuyResponse> buy(BuyRequest request) {
 
-        return new BuyResponse(true);
+        return CompletableFuture.completedFuture(new BuyResponse(true));
     }
 }
