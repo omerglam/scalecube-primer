@@ -1,6 +1,6 @@
 tignore
 !.*.yml
 /target/
+/.idea/
 *.iml
-.idea
 
