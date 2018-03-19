@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="quotes-service" />
+        <module name="quotes-service-api" />
+        <module name="wallet-service" />
+        <module name="wallet-service-api" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="1.8">
+      <module name="quotes-service" target="1.8" />
+      <module name="quotes-service-api" target="1.8" />
+      <module name="quotes-service-parent" target="1.5" />
+      <module name="scalecube-primer" target="1.5" />
+      <module name="wallet-service" target="1.8" />
+      <module name="wallet-service-api" target="1.8" />
+      <module name="wallet-service-parent" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
