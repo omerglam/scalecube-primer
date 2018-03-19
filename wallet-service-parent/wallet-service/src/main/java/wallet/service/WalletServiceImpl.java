@@ -1,9 +1,8 @@
 package wallet.service;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import io.scalecube.services.Microservices;
+import io.scalecube.transport.Address;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
@@ -13,7 +12,14 @@ public class WalletServiceImpl implements WalletService
 
     public static void main( String[] args )
     {
-        System.out.println("Hello World!");
+        Address seedAddress = Address.create("172.28.29.65",4802);
+
+        Microservices ms =  Microservices.builder()
+                .seeds(seedAddress)
+                .services(WalletService.class)
+                .build();
+
+        System.out.println(ms.cluster().members());
     }
 
     @Override

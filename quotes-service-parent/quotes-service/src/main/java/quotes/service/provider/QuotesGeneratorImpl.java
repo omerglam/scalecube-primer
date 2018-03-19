@@ -47,5 +47,4 @@ public class QuotesGeneratorImpl implements QuotesGenerator {
     public Observable<Quote> getQuotesObservable() {
         return quotesObservable;
     }
-
 }

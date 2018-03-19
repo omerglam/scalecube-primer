@@ -1,5 +1,7 @@
 package quotes.service.provider;
 
+import io.scalecube.services.Microservices;
+import io.scalecube.transport.Address;
 import quotes.service.Quote;
 import quotes.service.QuoteRequest;
 import quotes.service.QuotesService;
@@ -23,9 +25,14 @@ public class QuotesServiceImpl implements QuotesService {
 
     public static void main(String[] args) {
 
-        //TODO: scalecube bootstraping goes here.
+        Address seedAddress = Address.create("172.28.29.65", 4802);
 
+        Microservices ms = Microservices.builder()
+                .seeds(seedAddress)
+                .services(new QuotesServiceImpl())
+                .build();
 
+        System.out.println(ms.cluster().members());
     }
 
     @Override
@@ -41,7 +48,7 @@ public class QuotesServiceImpl implements QuotesService {
 
         QuotesGenerator generator = new QuotesGeneratorImpl(request.getTicker());
 
-        quotesGenerators.putIfAbsent(request.getTicker(),generator);
+        quotesGenerators.putIfAbsent(request.getTicker(), generator);
 
         return generator.generate();
     }

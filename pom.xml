@@ -10,6 +10,7 @@
     <modules>
         <module>quotes-service-parent</module>
         <module>wallet-service-parent</module>
+    <module>seed</module>
   </modules>
 
     <build>
