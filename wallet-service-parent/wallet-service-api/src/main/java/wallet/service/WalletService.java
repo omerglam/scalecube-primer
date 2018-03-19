@@ -8,5 +8,5 @@ import io.scalecube.services.annotations.ServiceMethod;
 public interface WalletService
 {
     @ServiceMethod
-    void buy(BuyRequest request);
+    BuyResponse buy(BuyRequest request);
 }
