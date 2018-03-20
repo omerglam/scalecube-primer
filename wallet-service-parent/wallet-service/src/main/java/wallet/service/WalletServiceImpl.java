@@ -17,7 +17,7 @@ public class WalletServiceImpl implements WalletService
 
         Microservices ms =  Microservices.builder()
                 .seeds(seedAddress)
-                .services(WalletService.class)
+                .services(new WalletServiceImpl())
                 .build();
 
         System.out.println(ms.cluster().members());
@@ -25,6 +25,7 @@ public class WalletServiceImpl implements WalletService
 
     @Override
     public CompletableFuture<BuyResponse> buy(BuyRequest request) {
+        System.out.println("received buy request");
 
         return CompletableFuture.completedFuture(new BuyResponse(true));
     }
