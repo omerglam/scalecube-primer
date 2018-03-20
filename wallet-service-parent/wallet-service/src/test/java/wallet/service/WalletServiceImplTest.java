@@ -23,6 +23,6 @@ public class WalletServiceImplTest
 
         CompletableFuture<BuyResponse> response = serviceProxy.buy(new BuyRequest(1,100));
 
-        Assert.assertTrue(response.getNow(null).isSuccessfull);
+        Assert.assertTrue(response.getNow(null).isSuccessfull); //TODO: awaiter
     }
 }

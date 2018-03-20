@@ -11,6 +11,7 @@
         <module>quotes-service-parent</module>
         <module>wallet-service-parent</module>
     <module>seed</module>
+    <module>gateway</module>
   </modules>
 
     <build>
