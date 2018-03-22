@@ -10,7 +10,7 @@ import io.scalecube.services.annotations.ServiceMethod;
 public interface QuotesService {
 
     @ServiceMethod
-    Observable quotes(QuoteRequest request);
+    Observable<Quote> quotes(QuoteRequest request);
 
 }
 

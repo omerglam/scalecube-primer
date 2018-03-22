@@ -1,38 +1,21 @@
 package gateway.main;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import io.scalecube.services.Microservices;
+import org.junit.jupiter.api.Test;
+import wallet.service.WalletServiceImpl;
 
-/**
- * Unit test for simple Gateway.
- */
 public class GatewayTest
-    extends TestCase
 {
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public GatewayTest(String testName )
-    {
-        super( testName );
+
+    @Test
+    public void gateway_buyproxy_sucess() {
+
+//        Microservices seed = Microservices.builder().build();
+//
+//        Microservices ms = Microservices.builder()
+//                .seeds(seed.cluster().address())
+//                .services(new WalletServiceImpl()).build();
+
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( GatewayTest.class );
-    }
-
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
-    }
 }

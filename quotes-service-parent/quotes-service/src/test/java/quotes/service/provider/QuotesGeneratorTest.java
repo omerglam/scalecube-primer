@@ -38,7 +38,7 @@ class QuotesGeneratorTest {
 
         List<Quote> quotesReceived = new ArrayList<>();
 
-        quotes.subscribe(quotesReceived::add);
+        quotes.doOnNext(quote -> System.out.println(quote.getTicker())).subscribe(quotesReceived::add);
 
         try {
 

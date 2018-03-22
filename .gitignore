@@ -3,6 +3,7 @@ tignore
 /target/
 .idea/
 target/
+.vertx/
 *.iml
 *~
 *.swp
