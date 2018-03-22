@@ -37,19 +37,6 @@ public class QuotesServiceImpl implements QuotesService {
 
     @Override
     public Observable<Quote> quotes(QuoteRequest request) {
-
-        //TODO: requires synchronization over the quotes generator collection?
-
-        // if already serving the quote, reuse the stream
-        if (quotesGenerators.containsKey(request.getTicker())) {
-
-            return quotesGenerators.get(request.getTicker()).generate(); //TODO: ugly coupling with internal impl - change
-        }
-
-        QuotesGenerator generator = new QuotesGeneratorImpl(request.getTicker());
-
-        quotesGenerators.putIfAbsent(request.getTicker(), generator);
-
-        return generator.generate();
+        return quotesGenerators.computeIfAbsent(request.getTicker(), QuotesGeneratorImpl::new).generate();
     }
 }

@@ -1,7 +1,10 @@
 package quotes.service.provider;
 
 import quotes.service.Quote;
+import rx.Emitter;
 import rx.Observable;
+import rx.Observer;
+import rx.functions.Action1;
 import rx.subjects.PublishSubject;
 import rx.subjects.Subject;
 
@@ -13,12 +16,12 @@ public class QuotesGeneratorImpl implements QuotesGenerator {
 
 
     private String ticker;
-    private PublishSubject<Quote> quotesPublisher;
 
     private Observable<Quote> quotesObservable;
 
 
     QuotesGeneratorImpl(String ticker) {
+        System.out.println("new generator for " + ticker);
         this.ticker = ticker;
     }
 
@@ -39,12 +42,8 @@ public class QuotesGeneratorImpl implements QuotesGenerator {
 
         Observable<Quote> obs = Observable.from(tickerQuoteStream::iterator);
 
-        quotesObservable = Observable.zip(obs, Observable.interval(1,TimeUnit.SECONDS),(quote,timer) -> quote);
+        quotesObservable = Observable.zip(obs, Observable.interval(1,TimeUnit.SECONDS),(quote,timer) -> quote).share();
 
-        return quotesObservable;
-    }
-
-    public Observable<Quote> getQuotesObservable() {
         return quotesObservable;
     }
 }

@@ -22,6 +22,9 @@ window.onbeforeunload = function() {
 
 exampleSocket.onmessage = function (event) {
 	   console.log(event.data);
+	   var rate = JSON.parse(event.data);
+	   document.getElementById("ask").innerText = rate.ask;
+	   document.getElementById("bid").innerText = rate.bid;
 //	  let rates = JSON.parse(event.data);
 //	  if(rates.currencyTo === "BTC") {
 //		  document.getElementById("btc-rate").innerText = rates.rate.toFixed(8);

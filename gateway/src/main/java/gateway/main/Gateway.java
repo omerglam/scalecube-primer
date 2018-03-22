@@ -43,22 +43,21 @@ public class Gateway {
 
         //TODO: here or inside the handler??
         Microservices microservices = Microservices.builder().seeds(seedAddress).build();
-        QuotesService quotesService = microservices.proxy().api(QuotesService.class).create();
 
         vertx.createHttpServer().websocketHandler(webSocket -> {
-
+            System.out.println("new socket");
             String path = webSocket.path().replaceAll("/","");
+            QuotesService quotesService = microservices.proxy().api(QuotesService.class).create();
 
             Subscription sub = quotesService.quotes(new QuoteRequest("USDJPY"))
-                    .subscribe(quote -> webSocket.writeTextMessage(Json.encode(quote)));
+                    .doOnNext((r)->System.out.println(r)).subscribe(quote -> webSocket.writeTextMessage(Json.encode(quote)));
 
             Handler<Void> unsubscribe = (nothing) -> sub.unsubscribe();
             webSocket.closeHandler(unsubscribe);
             webSocket.endHandler(unsubscribe);
             webSocket.exceptionHandler(throwable -> {
+                System.err.println(throwable);
                 unsubscribe.handle(null);
-
-                System.out.println(throwable);
             });
 
         }).requestHandler(router::accept).listen(8080);
